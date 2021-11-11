@@ -54,13 +54,8 @@
     <ApplicationIcon>Resources\Radio1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LiteGuard, Version=0.10.0.0, Culture=neutral, PublicKeyToken=d38e0b7ae24b08a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\LiteGuard.0.10.0\lib\net35\LiteGuard.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PrimS.Telnet, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telnet.0.7.0\lib\net45\PrimS.Telnet.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PrimS.Telnet.NetStandard, Version=0.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telnet.0.8.6\lib\net451\PrimS.Telnet.NetStandard.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -126,7 +121,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="License.txt" />
     <Resource Include="Resources\PlayIcon16x16.png" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +153,9 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="Resources\RemoteControlSplashScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="License.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

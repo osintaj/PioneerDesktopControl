@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using PrimS.Telnet;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Net.NetworkInformation;
 
@@ -422,10 +411,9 @@ namespace PioneerDesktopControl
             {
                 ReaderCTS.Cancel();
                 await GetOnOffStatus();
-                //await GetOnOffStatus();
 
-                TelnetClient.Dispose();
-                TelnetClient = null;
+                //TelnetClient.Dispose();  // This was showing error that TelnetClient is null
+                //TelnetClient = null;
             }
 
             EnableAppGUI(false);            
