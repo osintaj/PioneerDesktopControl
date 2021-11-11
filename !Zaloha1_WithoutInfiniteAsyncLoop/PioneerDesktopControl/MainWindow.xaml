@@ -1,0 +1,43 @@
+﻿<Window x:Name="MainWindow1" x:Class="PioneerDesktopControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PioneerDesktopControl"
+        mc:Ignorable="d"
+        Title="Pioneer Radio controller for X-HM71" Height="350" Width="525" Initialized="MainWindow1_Initialized">
+    <DockPanel x:Name="DockPanel1" Margin="15px" LastChildFill="False">
+        <Button x:Name="ReconnectButton" Margin="0 0 0 15" FontSize="16" Click="ReconnectButton_Click" DockPanel.Dock="Top">Reconnect</Button>
+        <Button x:Name="OnOffButton" Margin="0 0 0 15" FontSize="16" Click="OnOffButton_Click" DockPanel.Dock="Top">Turn On/ Turn Off</Button>
+        <UniformGrid Columns="3" Margin="0 0 0 15" DockPanel.Dock="Top">
+            <Button x:Name="MuteButton" Margin ="0 0 30 0" FontSize="16" Click="MuteButton_Click">Mute</Button>
+            <Button x:Name="VolUpButton" Margin="0 0 10 0" FontSize="16" Click="VolUpButton_Click">Volume +</Button>
+            <Button x:Name="VolDownButton" Margin="10 0 0 0" FontSize="16" Click="VolDownButton_Click">Volume -</Button>
+        </UniformGrid>
+
+        <Button x:Name="SelectNextInputButton" FontSize="16" DockPanel.Dock="Top">Select next input</Button>
+
+        <UniformGrid Columns="4" Margin="0 15 0 15" DockPanel.Dock="Top">
+            <Button x:Name="SelRadioButton" Margin ="0 0 10 0" FontSize="16" Click="SelRadioButton_Click" Content="FM radio"/>
+            <Button x:Name="SelInternetRadioButton" Margin="0 0 10 0" FontSize="16" Click="SelInternetRadioButton_Click">Internet Radio</Button>
+            <Button x:Name="SelUSBButton" Margin="0 0 10 0" FontSize="16" Click="SelUSBButton_Click">USB</Button>
+            <Button x:Name="SelCDROMButton" Margin="0 0 0 0" FontSize="16" Click="SelCDROMButton_Click">CD ROM</Button>
+        </UniformGrid>
+
+        <DockPanel  Width="Auto" Height="Auto" Margin="0 0 0 5" DockPanel.Dock="Top">
+            <TextBox x:Name="PresetTextBox" FontSize="18" FontWeight="Bold" Width="30" ToolTip="FM radio station" BorderThickness="0" IsReadOnly="True">1</TextBox>
+            <Slider x:Name="SelPresetSlider" Minimum="1" Maximum="10" Value="1" TickFrequency="1"  
+                    TickPlacement="BottomRight" Margin="0 5 0 0" SmallChange="1" LargeChange="1" 
+                    ToolTip="Select radio station from preset (1 - 10)" ValueChanged="SelPresetSlider_ValueChanged" IsSnapToTickEnabled="True"></Slider>
+        </DockPanel>
+        
+
+        <DockPanel DockPanel.Dock="Bottom">
+            <Label DockPanel.Dock="Left" Content="IP address of Pioneer HiFi system:" FontSize="16"/>
+            <TextBox x:Name="RadioAddressTextBox" FontSize="16" DockPanel.Dock="Left" VerticalAlignment="Center">192.168.1.109</TextBox>
+        </DockPanel>
+
+    </DockPanel>
+    
+
+</Window>
