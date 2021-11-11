@@ -1,4 +1,10 @@
-﻿The MIT License (MIT)
+﻿(c) Ondrej Sintaj, Liptovsky Hradok, Slovakia
+
+
+
+Telnet.0.8.6 package license:
+
+The MIT License (MIT)
 
 Copyright (c) Telnet contributors. (Telnet@prims.com)
 
