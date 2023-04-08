@@ -33,8 +33,8 @@ Name: "sk"; MessagesFile: "Slovak.isl";
 
 [Files]
 Source: "bin\Release\RemoteControlForPioneer.exe"; DestDir: "{app}"
-Source: "bin\Release\LiteGuard.dll"; DestDir: "{app}"
-Source: "bin\Release\PrimS.Telnet.dll"; DestDir: "{app}"
+;Source: "bin\Release\LiteGuard.dll"; DestDir: "{app}"
+Source: "bin\Release\PrimS.Telnet.NetStandard.dll"; DestDir: "{app}"
 
 
 
