@@ -163,16 +163,40 @@ namespace PioneerDesktopControl
             while (! ReaderCT.IsCancellationRequested)
             {
                 if (s.Length == 0)
-                {
-                    s = await TelnetClient.TerminatedReadAsync("\r\n", new TimeSpan(200));
+                {                   
+                    s = await TelnetClient.TerminatedReadAsync("\n", new TimeSpan(200));
                 }
 
                 if (s.IndexOf("\r\n") > 0)
                 {
                     msg = s.Substring(0, s.IndexOf("\r\n"));
-                    s = s.Substring(s.IndexOf("\r\n") + 2);
+                    s = s.Substring(s.IndexOf("\r\n") + 2);  // if multiple lines were read, read just first one
                 }
-                   
+
+                if (msg.Length == 0)  // if there is no message, do not process anything
+                    continue;
+
+                if (msg.IndexOf("VOL") >= 0) // Top menu
+                {
+                    VolValueLabel.Content = Convert.ToInt16(msg.Substring(3)) ;
+                }              
+
+                if (msg.IndexOf("GCP01") >= 0) // Top menu
+                {
+                    infoLabel.Content = msg.Substring(10);
+                }
+
+                if (msg.IndexOf("GEP01032") >= 0)  // Radio station text, GEP02020 is Station name
+                {
+                    infoLabel.Content = msg.Substring(8);
+                }
+
+                if ((msg.IndexOf("GEP") >= 0) && (msg[5] == '1')) // 5. bit means active menu item
+                {
+                    infoLabel.Content += " ->" + msg.Substring(8);
+                    //playerCMDs.SetIndex(Convert.ToInt16(msg.Substring(3,2))) ; // This will not work due to paging which I have not implemented
+                }
+
                 if (msg.CompareTo("MUT1") == 0)
                 {
                     Mute_On = false;
@@ -208,15 +232,25 @@ namespace PioneerDesktopControl
                 else if (msg.CompareTo("FN01") == 0)
                 {
                     playerCMDs = new CD_PlayerCMDs();
+                    infoLabel.Content = "CD player is active";
+                }
+                else if (msg.CompareTo("FN02") == 0)
+                {
+                    playerCMDs = new RADIO_PlayerCMDs();
+                    infoLabel.Content = "Radio active";
                 }
                 else if (msg.CompareTo("FN38") == 0)
                 {
                     playerCMDs = new Internet_PlayerCMDs();
+                    infoLabel.Content = "Internet radio is active";
                 }
                 else if (msg.CompareTo("FN17") == 0)
                 {
                     playerCMDs = new USB_PlayerCMDs();
+                    infoLabel.Content = "USB player is active";
                 }
+
+                msg = ""; // sometimes, there is no end of line character in msg. Message was processed, so clean it.
 
             }
 

@@ -3,7 +3,33 @@
 namespace PioneerDesktopControl
 {
 
-    public class PlayerCMDs
+/**
+ * Enum for Playback Operation.
+ * @readonly
+ 
+Command.PB_OPERATION = {
+
+	play:		"10",
+	pause:		"11",
+	previous:	"12",
+	next:		"13",
+	rev:		"14",
+	fwd:		"15",
+	display:	"18",
+	stop:		"20",
+	enter:		"30",
+	return_:	"31",
+	program:	"32",
+	repeat:		"34",
+	random:		"35",
+	topmenu:	"36",
+	edit:		"37",
+	ipodControl:"40"
+};
+**/
+
+
+public class PlayerCMDs
     {
         protected string PlayCMD;
         protected string StopCMD;
@@ -11,12 +37,19 @@ namespace PioneerDesktopControl
         protected string NextCMD;
         protected string PrevCMD;
 
-        public string getPlayCMD()
+        protected int index = 1;
+
+        public void SetIndex(int value)
+        {
+            index = value;
+        }
+
+        public virtual string getPlayCMD()
         {
             return PlayCMD;
         }
 
-        public string getStopCMD()
+        public virtual string getStopCMD()
         {
             return StopCMD;
         }
@@ -26,12 +59,12 @@ namespace PioneerDesktopControl
             return PauseCMD;
         }
 
-        public string getNextCMD()
+        public virtual string getNextCMD()
         {
             return NextCMD;
         }
 
-        public string getPrevCMD()
+        public virtual string getPrevCMD()
         {
             return PrevCMD;
         }
@@ -62,12 +95,57 @@ namespace PioneerDesktopControl
     {
         public Internet_PlayerCMDs()
         {
-            PlayCMD  = "00001GHP\r\n30PB";
-            StopCMD  = "20PB";
+            /*          PlayCMD  = "00001GHP\r\n30PB";
+                        StopCMD  = "20PB";
+                        PauseCMD = "11PB";
+                        NextCMD  = "13PB";
+                        PrevCMD  = "12PB";
+            */
+
+            PlayCMD = "00001GHP\n\n30PB";
+
+            // 20 is stop, 31 is return
+            StopCMD = "20PB\r\n31PB";  // It does not work sometimes and does not work like UP button
+
+            // StopCMD = "36PB";  // Top Menu
+
             PauseCMD = "11PB";
-            NextCMD  = "13PB";
-            PrevCMD  = "12PB";
+            NextCMD = "00001GGP\n\n";
+            PrevCMD = "00001GGP\n\n";
         }
+        public override string getStopCMD()
+        {
+            index = 1;  // reset menu to item 1 when going UP
+            return StopCMD;
+        }
+
+        public override string getPlayCMD()
+        {
+            PlayCMD = "000" + index.ToString("00") + "GHP\n\n30PB";
+            return PlayCMD;
+        }
+
+        public override string getNextCMD()
+        {
+            index++;
+            NextCMD = "000" + (index).ToString("00") + "GGP\n\n";
+            PrevCMD = "000" + (index - 1).ToString("00") + "GGP\n\n";
+
+            return NextCMD;
+        }
+
+        public override string getPrevCMD()
+        {
+            index--;
+            if (index < 1)
+                index = 1;
+
+            NextCMD = "000" + (index + 1).ToString("00") + "GGP\n\n";
+            PrevCMD = "000" + (index).ToString("00") + "GGP\n\n";
+
+            return PrevCMD;
+        }
+
     }
 
     public class USB_PlayerCMDs : PlayerCMDs
@@ -79,6 +157,18 @@ namespace PioneerDesktopControl
             PauseCMD = "11PB";
             NextCMD  = "13PB";
             PrevCMD  = "12PB";
+        }
+    }
+
+    public class RADIO_PlayerCMDs : PlayerCMDs
+    {
+        public RADIO_PlayerCMDs()
+        {
+            PlayCMD = "";
+            StopCMD = "";
+            PauseCMD = "";
+            NextCMD = "TPI"; // Tuner preset increment, TFI = tuner frequency increment
+            PrevCMD = "TPD"; // Tuner preset decrement, TFD = tuner frequency decrement
         }
     }
 

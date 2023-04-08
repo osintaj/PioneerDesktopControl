@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PioneerDesktopControl"
         mc:Ignorable="d"
-        Title="Remote control for Pioneer® X-HM71" Height="333.219" Width="525" Initialized="MainWindow1_Initialized" Closed="MainWindow1_Closed" Loaded="MainWindow1_Loaded" MinWidth="500" MinHeight="310" Icon="Resources/Radio1.ico" WindowStartupLocation="CenterScreen">
+        Title="Remote control for Pioneer® X-HM71" Height="350" Width="525" Initialized="MainWindow1_Initialized" Closed="MainWindow1_Closed" Loaded="MainWindow1_Loaded" MinWidth="500" MinHeight="340" Icon="Resources/Radio1.ico" WindowStartupLocation="CenterScreen">
     <DockPanel x:Name="DockPanel1" Margin="15px" LastChildFill="False">
         <Button x:Name="ReconnectButton" Margin="0 0 0 15" FontSize="16" Click="ReconnectButton_Click" DockPanel.Dock="Top">Reconnect</Button>
         <Button x:Name="OnOffButton" Margin="0 0 0 15" FontSize="16" Click="OnOffButton_Click" DockPanel.Dock="Top">Turn On / Turn Off</Button>
         <UniformGrid Columns="4" Margin="0 0 0 15" DockPanel.Dock="Top">
             <Button x:Name="MuteButton" Margin ="0 0 10 0" FontSize="16" Click="MuteButton_Click">Mute</Button>
-            <Border />
+            <!-- <Border />  -->
+            <Label x:Name="VolValueLabel" HorizontalAlignment="Center" FontSize="16">?</Label>
             <Button x:Name="VolDownButton" Margin="0 0 10 0" FontSize="16" Click="VolDownButton_Click">Vol -</Button>
             <Button x:Name="VolUpButton" Margin="0 0 0 0" FontSize="16" Click="VolUpButton_Click">Vol +</Button>
         </UniformGrid>
@@ -67,12 +68,21 @@
 
         </UniformGrid>
 
+        <DockPanel x:Name="InfoPanel" DockPanel.Dock="Top">
+            <Label x:Name="infoLabel" 
+                   Content="additional information" 
+                   FontSize="16"
+                   HorizontalAlignment="Left"/>                
+        </DockPanel>
+            
+        
 
         <DockPanel DockPanel.Dock="Bottom">
             <Label x:Name="IP_label"  DockPanel.Dock="Left" Content="IP address of X-HM71: " FontSize="16" MouseUp="IP_label_MouseUp"/>
             <Button x:Name="DisconnectButton" FontSize="16" Margin="15 0 0 0" DockPanel.Dock="Right" Click="DisconnectButton_Click">Disconnect</Button>
             <TextBox x:Name="RadioAddressTextBox" FontSize="16" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="Put IP address in format X.X.X.X">192.168.1.109</TextBox>
         </DockPanel>
+        
 
     </DockPanel>
 
