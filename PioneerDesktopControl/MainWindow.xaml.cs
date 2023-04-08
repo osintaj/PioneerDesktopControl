@@ -488,6 +488,8 @@ namespace PioneerDesktopControl
             SelUSBButton.Visibility = vis;
             // RadioStationPanel.Visibility = vis;
             RadioStationPanel2.Visibility = vis;
+            VolValueLabel.Visibility = vis;
+            infoLabel.Visibility = vis;
 
         }
 
