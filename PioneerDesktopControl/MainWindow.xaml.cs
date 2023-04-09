@@ -259,13 +259,16 @@ namespace PioneerDesktopControl
                     infoLabel.Content = "USB player is active";
                 }
 
-                msg = ""; // sometimes, there is no end of line character in msg. Message was processed, so clean it.
+                msg = ""; // sometimes, there is no end of line character in msg (likely due to timeout). Message was processed, so clean it.
 
             }
 
             // MessageBox.Show("Reader loop ended.");
 
             DisconnectButton_Click(null, null);
+
+            TelnetClient.Dispose();  // This was showing error that TelnetClient is null
+            TelnetClient = null;
 
         }
 
@@ -445,18 +448,17 @@ namespace PioneerDesktopControl
             SaveRegSettings();
         }
 
-        private async void DisconnectButton_Click(object sender, RoutedEventArgs e)
+        private void DisconnectButton_Click(object sender, RoutedEventArgs e)
         {
             DisconnectButton.IsEnabled = false;
 
-
             if (TelnetClient != null)
-            {
-                ReaderCTS.Cancel();
-                await GetOnOffStatus();
-
-                //TelnetClient.Dispose();  // This was showing error that TelnetClient is null
-                //TelnetClient = null;
+            {                
+                ReaderCTS.Cancel();                
+                
+                // This is called in main loop in case "Disconnect is pressed"
+                // TelnetClient.Dispose();  // This was showing error that TelnetClient is null
+                // TelnetClient = null;
             }
 
             EnableAppGUI(false);            
