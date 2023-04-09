@@ -96,6 +96,14 @@ namespace PioneerDesktopControl
             }
         }
 
+        private async Task GetVolumeStatus()
+        {
+            if (TelnetClient.IsConnected == true)
+            {
+                await TelnetClient.Write("\r\n?V\r\n");
+            }
+        }
+
 
         private async Task SetVolume(bool up)
         {
@@ -157,6 +165,7 @@ namespace PioneerDesktopControl
             await GetOnOffStatus();
             await GetMuteStatus();
             await GetFunctionStatus();
+            await GetVolumeStatus();
 
             s = "";
 
