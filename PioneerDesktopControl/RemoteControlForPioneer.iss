@@ -3,7 +3,7 @@
 
 [Setup]
 AppName=Remote control for Pioneer X-HM71
-AppVerName=Remote control for Pioneer X-HM71 ver. 1.2 (.NET)
+AppVerName=Remote control for Pioneer X-HM71 ver. 1.3 (.NET)
 AppCopyright=Copyright © 2016 - 2023 Ondrej Sintaj
 DefaultDirName={commonpf}\Sintaj
 DefaultGroupName=Sintaj
@@ -14,7 +14,7 @@ OutputDir=Sintaj
 OutputBaseFilename=RemoteControlForPioneerSetup
 
 AppPublisher=Ondrej Sintaj
-AppVersion=1.2
+AppVersion=1.3
 
 ChangesAssociations=yes
 

@@ -35,7 +35,13 @@ public class PlayerCMDs
         protected string StopCMD;
         protected string PauseCMD;
         protected string NextCMD;
-        protected string PrevCMD;
+        protected string PrevCMD; 
+        protected string IRPlayAndInSubCMD; 
+        protected string IRDirUpCMD;
+        protected string IRGoUpCMD; 
+        protected string IRGoDwCMD; 
+        protected string IR20UpCMD; 
+        protected string IR20DwCMD;
 
         protected int index = 1;
 
@@ -68,6 +74,30 @@ public class PlayerCMDs
         {
             return PrevCMD;
         }
+        public virtual string getIRPlayAndInSubCMD()
+        {
+            return IRPlayAndInSubCMD;
+        }
+        public virtual string getIRDirUpCMD()
+        {
+            return IRDirUpCMD;
+        }
+        public virtual string getIRGoUpCMD()
+        {
+            return IRGoUpCMD;
+        }
+        public virtual string getIRGoDwCMD()
+        {
+            return IRGoDwCMD;
+        }
+        public virtual string getIR20UpCMD()
+        {
+            return IR20UpCMD;
+        }
+        public virtual string getIR20DwCMD()
+        {
+            return IR20DwCMD;
+        }
 
         public PlayerCMDs()
         {
@@ -76,6 +106,10 @@ public class PlayerCMDs
             PauseCMD = "";
             NextCMD = "";
             PrevCMD = "";
+            IRPlayAndInSubCMD = "";
+            IRDirUpCMD = "";
+            IRGoUpCMD = ""; 
+            IRGoDwCMD = "";
         }
     }
 
@@ -87,7 +121,8 @@ public class PlayerCMDs
             StopCMD  = "20CDP";
             PauseCMD = "11CDP";
             NextCMD  = "13CDP";
-            PrevCMD  = "12CDP";
+            PrevCMD  = "12CDP"; 
+            
         }
     }
 
@@ -95,57 +130,44 @@ public class PlayerCMDs
     {
         public Internet_PlayerCMDs()
         {
-            /*          PlayCMD  = "00001GHP\r\n30PB";
-                        StopCMD  = "20PB";
-                        PauseCMD = "11PB";
-                        NextCMD  = "13PB";
-                        PrevCMD  = "12PB";
-            */
-
-            PlayCMD = "00001GHP\n\n30PB";
-
-            // 20 is stop, 31 is return
-            StopCMD = "20PB\r\n31PB";  // It does not work sometimes and does not work like UP button
-
-            // StopCMD = "36PB";  // Top Menu
-
-            PauseCMD = "11PB";
-            NextCMD = "00001GGP\n\n";
-            PrevCMD = "00001GGP\n\n";
-        }
-        public override string getStopCMD()
+            NextCMD = "00001GHP\n\n30PB";
+            PrevCMD = "20PB\r\n31PB"; 
+            IRPlayAndInSubCMD = "00001GHP\n\n30PB";
+            IRDirUpCMD = "20PB\r\n31PB";
+            IRGoUpCMD = "00001GGP\n\n";
+            IRGoDwCMD = "00001GGP\n\n";
+                    }
+        public override string getIRDirUpCMD()
         {
             index = 1;  // reset menu to item 1 when going UP
-            return StopCMD;
+            return IRDirUpCMD;
         }
 
-        public override string getPlayCMD()
+        public override string getIRPlayAndInSubCMD()
         {
-            PlayCMD = "000" + index.ToString("00") + "GHP\n\n30PB";
-            return PlayCMD;
+            IRPlayAndInSubCMD = "0" + index.ToString("0000") + "GHP\n\n30PB";
+            return IRPlayAndInSubCMD;
         }
 
-        public override string getNextCMD()
+        public override string getIRGoDwCMD()
         {
             index++;
-            NextCMD = "000" + (index).ToString("00") + "GGP\n\n";
-            PrevCMD = "000" + (index - 1).ToString("00") + "GGP\n\n";
-
-            return NextCMD;
+            
+            IRGoDwCMD = "0" + index.ToString("0000") + "GGP\n\n";
+            return IRGoDwCMD;
         }
 
-        public override string getPrevCMD()
+        public override string getIRGoUpCMD()
         {
             index--;
             if (index < 1)
-                index = 1;
+                index = 0;
 
-            NextCMD = "000" + (index + 1).ToString("00") + "GGP\n\n";
-            PrevCMD = "000" + (index).ToString("00") + "GGP\n\n";
-
-            return PrevCMD;
+            IRGoUpCMD = "0" + index.ToString("0000") + "GGP\n\n";
+            
+            return IRGoUpCMD;
         }
-
+        
     }
 
     public class USB_PlayerCMDs : PlayerCMDs

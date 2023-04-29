@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PioneerDesktopControl"
         mc:Ignorable="d"
-        Title="Remote control for Pioneer® X-HM71" Height="350" Width="525" Initialized="MainWindow1_Initialized" Closed="MainWindow1_Closed" Loaded="MainWindow1_Loaded" MinWidth="500" MinHeight="340" Icon="Resources/Radio1.ico" WindowStartupLocation="CenterScreen">
+        Title="Remote control for Pioneer® X-HM71" Height="400" Width="525" Initialized="MainWindow1_Initialized" Closed="MainWindow1_Closed" Loaded="MainWindow1_Loaded" MinWidth="500" MinHeight="340" Icon="Resources/Radio1.ico" WindowStartupLocation="CenterScreen">
     <DockPanel x:Name="DockPanel1" Margin="15px" LastChildFill="False">
         <Button x:Name="ReconnectButton" Margin="0 0 0 15" FontSize="16" Click="ReconnectButton_Click" DockPanel.Dock="Top">Reconnect</Button>
         <Button x:Name="OnOffButton" Margin="0 0 0 15" FontSize="16" Click="OnOffButton_Click" DockPanel.Dock="Top">Turn On / Turn Off</Button>
@@ -18,8 +18,8 @@
         </UniformGrid>
 
         <UniformGrid Columns="4" Margin="0 0 0 15" DockPanel.Dock="Top">
-            <Button x:Name="SelRadioButton" Margin ="0 0 10 0" FontSize="16" Click="SelRadioButton_Click" Content="FM radio"/>
-            <Button x:Name="SelInternetRadioButton" Margin="0 0 10 0" FontSize="16" Click="SelInternetRadioButton_Click">Internet Radio</Button>
+            <Button x:Name="SelRadioButton" Background="LightBlue" Margin ="0 0 10 0" FontSize="16" Click="SelRadioButton_Click" Content="FM Radio"/>
+            <Button x:Name="SelInternetRadioButton" Background="LightPink" Margin="0 0 10 0" FontSize="16" Click="SelInternetRadioButton_Click">Internet Radio</Button>
             <Button x:Name="SelUSBButton" Margin="0 0 10 0" FontSize="16" Click="SelUSBButton_Click">USB</Button>
             <Button x:Name="SelCDROMButton" Margin="0 0 0 0" FontSize="16" Click="SelCDROMButton_Click">CD ROM</Button>
         </UniformGrid>
@@ -32,20 +32,18 @@
         </DockPanel>
 
         <UniformGrid x:Name="RadioStationPanel2" Columns="8" Margin="0 0 0 15" DockPanel.Dock="Top">
-            <Button x:Name="selSt1Button" Margin="0 0 10 0" FontSize="16" Click="selStationButton_Click" Content="1" Tag="1" ToolTip="FM radio station"/>
-            <Button x:Name="selSt2Button" Margin="0 0 10 0" FontSize="16" Click="selStationButton_Click" Content="2" Tag="2" ToolTip="FM radio station"/>
-            <Button x:Name="selSt3Button" Margin="0 0 10 0" FontSize="16" Click="selStationButton_Click" Content="3" Tag="3" ToolTip="FM radio station"/>
-            <Button x:Name="selSt4Button" Margin="0 0 10 0" FontSize="16" Click="selStationButton_Click" Content="4" Tag="4" ToolTip="FM radio station"/>
-            <Button x:Name="selSt5Button" Margin="0 0 10 0" FontSize="16" Click="selStationButton_Click" Content="5" Tag="5" ToolTip="FM radio station"/>
-            <Button x:Name="selSt6Button" Margin="0 0 10 0" FontSize="16" Click="selStationButton_Click" Content="6" Tag="6" ToolTip="FM radio station"/>
-            <Button x:Name="selSt7Button" Margin="0 0 5 0"  FontSize="16" Click="selStationButton_Click" Content="7" Tag="7" ToolTip="FM radio station"/>
-            <Button x:Name="selSt8Button" Margin="5 0 0 0"  FontSize="16" Click="selStationButton_Click" Content="8" Tag="8" ToolTip="FM radio station"/>
+            <Button x:Name="selSt1Button" Margin="0 0 10 0" Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="1" Tag="1" ToolTip="FM radio station"/>
+            <Button x:Name="selSt2Button" Margin="0 0 10 0" Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="2" Tag="2" ToolTip="FM radio station"/>
+            <Button x:Name="selSt3Button" Margin="0 0 10 0" Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="3" Tag="3" ToolTip="FM radio station"/>
+            <Button x:Name="selSt4Button" Margin="0 0 10 0" Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="4" Tag="4" ToolTip="FM radio station"/>
+            <Button x:Name="selSt5Button" Margin="0 0 10 0" Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="5" Tag="5" ToolTip="FM radio station"/>
+            <Button x:Name="selSt6Button" Margin="0 0 10 0" Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="6" Tag="6" ToolTip="FM radio station"/>
+            <Button x:Name="selSt7Button" Margin="0 0 5 0"  Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="7" Tag="7" ToolTip="FM radio station"/>
+            <Button x:Name="selSt8Button" Margin="5 0 0 0"  Background="LightBlue" FontSize="16" Click="selStationButton_Click" Content="8" Tag="8" ToolTip="FM radio station"/>
         </UniformGrid>
 
         <UniformGrid x:Name="playerButtons" Columns="4" Margin="0 0 0 15" DockPanel.Dock="Top">
-            <Button x:Name="SelPlayButton" Margin ="0 0 10 0" FontSize="16" Click="SelPlayButton_Click">
-                Play
-            </Button>
+            <Button x:Name="SelPlayButton" Margin ="0 0 10 0" FontSize="16" Click="SelPlayButton_Click">Play</Button>
             <Button x:Name="SelPauseButton" Margin="0 0 10 0" FontSize="16" Click="SelPauseButton_Click">Pause &#10074;&#10074;</Button>
             <Button x:Name="SelStopButton" Margin="0 0 10 0" FontSize="16" Click="SelStopButton_Click">Stop  &#9724;</Button>
             <UniformGrid Columns="2">
@@ -68,21 +66,35 @@
 
         </UniformGrid>
 
+        <UniformGrid x:Name="IRplayerButtons" Columns="4" Margin="0 0 0 15" DockPanel.Dock="Top">
+            <Button x:Name="IRSelPlayAndInSubButton" Background="LightPink" Margin ="0 0 10 0" FontSize="16" Click="IRSelPlayAndInSubButton_Click">IR &#9658; / &#10233;          
+            </Button>
+            <Button x:Name="IRSelDirUpButton" Background="LightPink" Margin="0 0 10 0" FontSize="16" Click="IRSelDirUpButton_Click">IR &#10232;</Button>
+            <UniformGrid Columns="2" >
+                <Button x:Name="IRSelGoUpButton" Background="LightPink" Margin="0 0 10 0" FontSize="16" Click="IRSelGoUpButton_Click">Go &#8657;</Button>
+                <Button x:Name="IRSelGoDwButton" Background="LightPink" Margin="0 0 10 0" FontSize="16" Click="IRSelGoDwButton_Click">Go &#8659;</Button>
+            </UniformGrid>
+            <UniformGrid Columns="2" >
+                <Button x:Name="IRSel20UpButton" Background="LightPink" Margin="0 0 5 0" FontSize="16" Click="IRSel20UpButton_Click">10 &#8657;</Button>
+                <Button x:Name="IRSel20DwButton" Background="LightPink" Margin="5 0 0 0" FontSize="16" Click="IRSel20DwButton_Click">10 &#8659;</Button>
+            </UniformGrid>
+
+        </UniformGrid>
         <DockPanel x:Name="InfoPanel" DockPanel.Dock="Top">
             <Label x:Name="infoLabel" 
                    Content="additional information" 
                    FontSize="16"
-                   HorizontalAlignment="Left"/>                
+                   HorizontalAlignment="Left"/>
         </DockPanel>
-            
-        
+
+
 
         <DockPanel DockPanel.Dock="Bottom">
             <Label x:Name="IP_label"  DockPanel.Dock="Left" Content="IP address of X-HM71: " FontSize="16" MouseUp="IP_label_MouseUp"/>
             <Button x:Name="DisconnectButton" FontSize="16" Margin="15 0 0 0" DockPanel.Dock="Right" Click="DisconnectButton_Click">Disconnect</Button>
             <TextBox x:Name="RadioAddressTextBox" FontSize="16" DockPanel.Dock="Left" VerticalAlignment="Center" ToolTip="Put IP address in format X.X.X.X">192.168.1.109</TextBox>
         </DockPanel>
-        
+
 
     </DockPanel>
 

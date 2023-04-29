@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Remote control for Pioneer X-HM71 (unofficial)")]
-[assembly: AssemblyCopyright("Copyright © 2016 Ondrej Sintaj")]
+[assembly: AssemblyCopyright("Copyright © 2023 Ondrej Sintaj & AR")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

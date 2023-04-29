@@ -497,6 +497,12 @@ namespace PioneerDesktopControl
             SelRadioButton.Visibility = vis;
             SelCDROMButton.Visibility = vis;
             SelUSBButton.Visibility = vis;
+            IRSelPlayAndInSubButton.Visibility = vis;
+            IRSelDirUpButton.Visibility = vis;
+            IRSelGoUpButton.Visibility = vis;
+            IRSelGoDwButton.Visibility = vis;
+            IRSel20UpButton.Visibility = vis;
+            IRSel20DwButton.Visibility = vis;
             // RadioStationPanel.Visibility = vis;
             RadioStationPanel2.Visibility = vis;
             VolValueLabel.Visibility = vis;
@@ -535,6 +541,51 @@ namespace PioneerDesktopControl
         private void SelPrevButton_Click(object sender, RoutedEventArgs e)
         {
             SendCMD(playerCMDs.getPrevCMD());
+        }
+        private void IRSelPlayAndInSubButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendCMD(playerCMDs.getIRPlayAndInSubCMD());
+        }
+        
+        private void IRSelDirUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendCMD(playerCMDs.getIRDirUpCMD());
+        }
+        private void IRSelGoUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendCMD(playerCMDs.getIRGoUpCMD());
+        }
+        private void IRSelGoDwButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendCMD(playerCMDs.getIRGoDwCMD());
+        }
+        private void IRSel20UpButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD());
+            SendCMD(playerCMDs.getIRGoUpCMD()); 
+                      
+        }
+        private void IRSel20DwButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            SendCMD(playerCMDs.getIRGoDwCMD());
+            
         }
 
         private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
