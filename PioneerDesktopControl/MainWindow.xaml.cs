@@ -202,7 +202,7 @@ namespace PioneerDesktopControl
 
                 else if (msg.IndexOf("GEP02020") >= 0)  // GEP02020 is Station name
                 {
-                    infoLabel.Content = msg.Substring(8).Replace("\"", "") + "(" + infoLabel.Content + ")";
+                    infoLabel.Content = msg.Substring(8).Replace("\"", "") + " (" + infoLabel.Content + ")";
                 }
 
                 else if ((msg.IndexOf("GEP") >= 0) && (msg[5] == '1')) // 5. bit means active menu item
