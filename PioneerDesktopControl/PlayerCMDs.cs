@@ -121,15 +121,15 @@ public class PlayerCMDs
 
         public override string getPlayCMD()
         {
-            PlayCMD = "000" + index.ToString("00") + "GHP\n\n30PB";
+            PlayCMD = index.ToString("00000") + "GHP\n\n30PB";
             return PlayCMD;
         }
 
         public override string getNextCMD()
         {
             index++;
-            NextCMD = "000" + (index).ToString("00") + "GGP\n\n";
-            PrevCMD = "000" + (index - 1).ToString("00") + "GGP\n\n";
+            NextCMD = (index).ToString("00000") + "GGP\n\n";
+            PrevCMD = (index - 1).ToString("00000") + "GGP\n\n";
 
             return NextCMD;
         }
@@ -140,8 +140,8 @@ public class PlayerCMDs
             if (index < 1)
                 index = 1;
 
-            NextCMD = "000" + (index + 1).ToString("00") + "GGP\n\n";
-            PrevCMD = "000" + (index).ToString("00") + "GGP\n\n";
+            NextCMD = (index + 1).ToString("00000") + "GGP\n\n";
+            PrevCMD = (index).ToString("00000") + "GGP\n\n";
 
             return PrevCMD;
         }

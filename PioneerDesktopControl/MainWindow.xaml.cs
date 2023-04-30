@@ -190,23 +190,28 @@ namespace PioneerDesktopControl
                     VolValueLabel.Content = Convert.ToInt16(msg.Substring(3)) ;
                 }              
 
-                if (msg.IndexOf("GCP01") >= 0) // Top menu
+                else if (msg.IndexOf("GCP01") >= 0) // Top menu
                 {
                     infoLabel.Content = msg.Substring(10);
                 }
 
-                if (msg.IndexOf("GEP01032") >= 0)  // Radio station text, GEP02020 is Station name
+                else if (msg.IndexOf("GEP01032") >= 0)  // Radio station text
                 {
-                    infoLabel.Content = msg.Substring(8);
+                    infoLabel.Content = msg.Substring(8).Replace("\"", "");
                 }
 
-                if ((msg.IndexOf("GEP") >= 0) && (msg[5] == '1')) // 5. bit means active menu item
+                else if (msg.IndexOf("GEP02020") >= 0)  // GEP02020 is Station name
+                {
+                    infoLabel.Content = msg.Substring(8).Replace("\"", "") + "(" + infoLabel.Content + ")";
+                }
+
+                else if ((msg.IndexOf("GEP") >= 0) && (msg[5] == '1')) // 5. bit means active menu item
                 {
                     infoLabel.Content += " ->" + msg.Substring(8);
                     //playerCMDs.SetIndex(Convert.ToInt16(msg.Substring(3,2))) ; // This will not work due to paging which I have not implemented
                 }
 
-                if (msg.CompareTo("MUT1") == 0)
+                else if (msg.CompareTo("MUT1") == 0)
                 {
                     Mute_On = false;
                     MuteButton.Content = "Mute";
