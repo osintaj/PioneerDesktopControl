@@ -68,12 +68,16 @@
 
         </UniformGrid>
 
-        <DockPanel x:Name="InfoPanel" DockPanel.Dock="Top">
-            <Label x:Name="infoLabel" 
-                   Content="additional information" 
+        <StackPanel x:Name="InfoPanel" DockPanel.Dock="Top">
+            <Label x:Name="StationNameLabel"
+                   Content="Station: -"
                    FontSize="16"
-                   HorizontalAlignment="Left"/>                
-        </DockPanel>
+                   HorizontalAlignment="Left"/>
+            <Label x:Name="infoLabel"
+                   Content="additional information"
+                   FontSize="16"
+                   HorizontalAlignment="Left"/>
+        </StackPanel>
             
         
 

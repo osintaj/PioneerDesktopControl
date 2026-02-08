@@ -30,6 +30,7 @@ namespace PioneerDesktopControl
 
         const string RegRadioIPAddress = "Radio IP address";
         const string RegLocation = "Sintaj\\PioneerDesktopControl";
+        const string StationNamePrefix = "Station: ";
 
 
         private bool LoadRegSettings()
@@ -102,6 +103,17 @@ namespace PioneerDesktopControl
             {
                 await TelnetClient.Write("\r\n?V\r\n");
             }
+        }
+
+        private void SetStationName(string stationName)
+        {
+            if (string.IsNullOrWhiteSpace(stationName))
+            {
+                StationNameLabel.Content = StationNamePrefix + "-";
+                return;
+            }
+
+            StationNameLabel.Content = StationNamePrefix + stationName.Trim();
         }
 
 
@@ -202,7 +214,7 @@ namespace PioneerDesktopControl
 
                 else if (msg.IndexOf("GEP02020") >= 0)  // GEP02020 is Station name
                 {
-                    infoLabel.Content = msg.Substring(8).Replace("\"", "") + " (" + infoLabel.Content + ")";
+                    SetStationName(msg.Substring(8).Replace("\"", ""));
                 }
 
                 else if ((msg.IndexOf("GEP") >= 0) && (msg[5] == '1')) // 5. bit means active menu item
@@ -247,21 +259,25 @@ namespace PioneerDesktopControl
                 {
                     playerCMDs = new CD_PlayerCMDs();
                     infoLabel.Content = "CD player is active";
+                    SetStationName(null);
                 }
                 else if (msg.CompareTo("FN02") == 0)
                 {
                     playerCMDs = new RADIO_PlayerCMDs();
                     infoLabel.Content = "Radio active";
+                    SetStationName(null);
                 }
                 else if (msg.CompareTo("FN38") == 0)
                 {
                     playerCMDs = new Internet_PlayerCMDs();
                     infoLabel.Content = "Internet radio is active";
+                    SetStationName("Loading...");
                 }
                 else if (msg.CompareTo("FN17") == 0)
                 {
                     playerCMDs = new USB_PlayerCMDs();
                     infoLabel.Content = "USB player is active";
+                    SetStationName(null);
                 }
 
                 msg = ""; // sometimes, there is no end of line character in msg (likely due to timeout). Message was processed, so clean it.
@@ -505,7 +521,7 @@ namespace PioneerDesktopControl
             // RadioStationPanel.Visibility = vis;
             RadioStationPanel2.Visibility = vis;
             VolValueLabel.Visibility = vis;
-            infoLabel.Visibility = vis;
+            InfoPanel.Visibility = vis;
 
         }
 
